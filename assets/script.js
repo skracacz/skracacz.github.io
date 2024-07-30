@@ -19,9 +19,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const links = JSON.parse(localStorage.getItem('links') || '[]');
         linksTableBody.innerHTML = links.map(link => `
             <tr>
-                <td><a href="${window.location.origin}/${link.alias}">${window.location.origin}/${link.alias}</a></td>
+                <td><a href="redirect.html?alias=${link.alias}">${window.location.origin}/redirect.html?alias=${link.alias}</a></td>
                 <td>${link.longUrl}</td>
-                <td><button class="copy-btn" data-link="${window.location.origin}/${link.alias}">KOPIUJ</button></td>
+                <td><button class="copy-btn" data-link="${window.location.origin}/redirect.html?alias=${link.alias}">KOPIUJ</button></td>
             </tr>
         `).join('');
     };
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         saveLink(alias, longUrl);
         loadLinks();
-        output.innerHTML = `<p>Skrócony link: <a href="${window.location.origin}/${alias}">${window.location.origin}/${alias}</a></p>`;
+        output.innerHTML = `<p>Skrócony link: <a href="${window.location.origin}/redirect.html?alias=${alias}">${window.location.origin}/redirect.html?alias=${alias}</a></p>`;
         form.reset();
     });
 
